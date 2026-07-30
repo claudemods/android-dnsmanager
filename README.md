@@ -9,7 +9,7 @@ A sleek and intuitive app to effortlessly manage and switch between DNS provider
 <table>
   <tr>
     <td align="center"><img src="https://github.com/claudemods/android-dnsmanager/blob/main/app.png" height="540"></td>
-    <td><img width="960" height="540" alt="image" src="https://github.com/claudemods/android-dnsmanager/blob/main/dnschanger.jpg" /></td>
+    <td><img height="540" alt="image" src="https://github.com/claudemods/android-dnsmanager/blob/main/dnschanger.jpg" /></td>
   </tr>
 </table>
 

@@ -6,7 +6,14 @@
 
 A sleek and intuitive app to effortlessly manage and switch between DNS providers on Android 16 with full IPv4 and IPv6 support.
 
-![DNS Manager Screenshot](https://github.com/claudemods/android-dnsmanager/blob/main/app.png)
+![DNS Manager Screenshot](https://github.com/claudemods/android-dnsmanager/blob/main/app.png) <img width="270" height="585" alt="samsung s26 ultra" src="https://github.com/user-attachments/assets/4cd3830b-dca6-40d4-9095-edcd6ec7c4d4" />
+
+## 🚀 Quick Start
+
+### Prerequisites
+- 📱 Android 16 or higher tested on samsungs s24 ultra samsung s25 ultra and samsungs 26 ultra with android 17 one ui 9 beta
+- ⚙️ Device settings access for DNS configuration
+- 🔐 No root required – works with Android's built-in Private DNS feature
 
 ## ✨ Features
 
@@ -27,10 +34,3 @@ A sleek and intuitive app to effortlessly manage and switch between DNS provider
 | 🏠 **OpenDNS** | `208.67.222.222` | `208.67.220.220` | `2620:119:35::35` | `2620:119:53::53` |
 | 🛡️ **Quad9 DNS** | `9.9.9.11` | `149.112.112.11` | `2620:fe::11` | `2620:fe::fe:11` |
 | 🚫 **AdGuard DNS** | `94.140.14.14` | `94.140.15.15` | `2a10:50c0::ad1:ff` | `2a10:50c0::ad2:ff` |
-
-## 🚀 Quick Start
-
-### Prerequisites
-- 📱 Android 16 or higher tested on samsungs s24 ultra samsung s25 ultra and samsungs 26 ultra with android 17 one ui 9 beta
-- ⚙️ Device settings access for DNS configuration
-- 🔐 No root required – works with Android's built-in Private DNS feature

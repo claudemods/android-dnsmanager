@@ -6,7 +6,12 @@
 
 A sleek and intuitive app to effortlessly manage and switch between DNS providers on Android 16 with full IPv4 and IPv6 support.
 
-https://github.com/claudemods/android-dnsmanager/blob/main/app.png <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/240540b8-7f52-44d8-8c66-91abbd6fcbb7"
+<table>
+  <tr>
+    <td><img src="https://github.com/claudemods/android-dnsmanager/blob/main/app.png" width="100"></td>
+    <td><img width="960" height="540" alt="image" src="https://github.com/user-attachments/assets/240540b8-7f52-44d8-8c66-91abbd6fcbb7" /></td>
+  </tr>
+</table>
 
 ## 🚀 Quick Start
 

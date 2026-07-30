@@ -1,0 +1,6 @@
+{
+  "name": "DNS Changer",
+  "description": "A simple and elegant DNS changer with Quad9, Google, and Cloudflare options.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

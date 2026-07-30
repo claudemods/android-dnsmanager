@@ -88,9 +88,27 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+    private val notificationPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { /* Permission result handled silently */ }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+            notificationPermissionLauncher.launch(android.Manifest.permission.POST_NOTIFICATIONS)
+        }
+
+        val prefs = getSharedPreferences("dns_prefs", Context.MODE_PRIVATE)
+        val savedName = prefs.getString("selected_provider_name", null) ?: prefs.getString("name", null)
+        if (savedName != null) {
+            val found = Providers.find { it.name == savedName }
+            if (found != null) {
+                selectedProvider.value = found
+            }
+        }
+
         setContent {
             MyApplicationTheme {
                 Scaffold(
@@ -106,8 +124,10 @@ class MainActivity : ComponentActivity() {
                         providers = Providers,
                         selectedProvider = currentProvider,
                         isConnected = connected,
-                        onProviderSelected = {
-                            selectedProvider.value = it
+                        onProviderSelected = { provider ->
+                            selectedProvider.value = provider
+                            val p = getSharedPreferences("dns_prefs", Context.MODE_PRIVATE)
+                            p.edit().putString("selected_provider_name", provider.name).apply()
                         },
                         onToggleConnection = {
                             if (connected) {
@@ -133,6 +153,15 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun checkVpnPermissionAndStart(provider: DnsProvider) {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+            if (androidx.core.content.ContextCompat.checkSelfPermission(
+                    this,
+                    android.Manifest.permission.POST_NOTIFICATIONS
+                ) != android.content.pm.PackageManager.PERMISSION_GRANTED
+            ) {
+                notificationPermissionLauncher.launch(android.Manifest.permission.POST_NOTIFICATIONS)
+            }
+        }
         val intent = VpnService.prepare(this)
         if (intent != null) {
             pendingProvider = provider
@@ -145,6 +174,7 @@ class MainActivity : ComponentActivity() {
     private fun startVpn(provider: DnsProvider) {
         val prefs = getSharedPreferences("dns_prefs", android.content.Context.MODE_PRIVATE)
         prefs.edit().apply {
+            putString("selected_provider_name", provider.name)
             putString("name", provider.name)
             putString("ipv4Primary", provider.ipv4Primary)
             putString("ipv4Secondary", provider.ipv4Secondary)
@@ -159,7 +189,7 @@ class MainActivity : ComponentActivity() {
             putExtra("ipv6Primary", provider.ipv6Primary)
             putExtra("ipv6Secondary", provider.ipv6Secondary)
         }
-        startService(intent)
+        androidx.core.content.ContextCompat.startForegroundService(this, intent)
         showVpnSettingsDialog.value = true
     }
 

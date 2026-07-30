@@ -1,4 +1,4 @@
-# 🌐 DNS Manager for Android 16
+# 🌐 DNS Manager for Android 16/Android 17
 
 ![Android](https://img.shields.io/badge/Android-16%2B-brightgreen?logo=android)
 ![Platform](https://img.shields.io/badge/Platform-Android%2016-3DDC84?logo=android)
